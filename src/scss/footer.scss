@@ -1,0 +1,163 @@
+//====================================================================================================
+.footer {
+  background-color: $bgfooterGreen;
+  @include adaptiveValue("padding-top", 70, 40);
+  &__container {
+    @media (max-width: $tablet) {
+      display: flex;
+
+      justify-content: space-evenly;
+      @include adaptiveValue("gap", 40, 20);
+    }
+  }
+  &__body {
+    @include adaptiveValue("margin-bottom", 70, 40);
+    position: relative;
+    @media (max-width: $tablet) {
+      width: 100%;
+      display: flex;
+      justify-content: space-evenly;
+    }
+    @media (max-width: $mobile) {
+      justify-content: space-evenly;
+      @include adaptiveValue("gap", 150, 20);
+      padding-right: toRem(65);
+    }
+    @media (max-width: $mobileSmall) {
+      justify-content: space-between;
+      padding-right: toRem(0);
+    }
+  }
+  &__content {
+    display: grid;
+    grid-template-columns: 1fr 30% 1fr;
+    justify-items: center;
+    align-items: center;
+    row-gap: toRem(30);
+    @media (max-width: $tablet) {
+      display: flex;
+      flex-direction: column;
+    }
+    @media (max-width: $mobileSmall) {
+      align-items: start;
+    }
+  }
+
+  &__sidebar {
+    display: grid;
+    gap: toRem(10);
+    justify-items: center;
+    text-wrap: nowrap;
+    @media (max-width: $mobileSmall) {
+      justify-items: start;
+      text-wrap: wrap;
+    }
+
+    & p {
+      @include adaptiveValue("font-size", 16, 14);
+    }
+    &-touch {
+      border-right: 1px solid $textGreen;
+      @include adaptiveValue(
+        "padding-right",
+        125,
+        30,
+        2,
+        $containerWidth,
+        991.98
+      );
+      justify-self: end;
+      @media (max-width: $tablet) {
+        border-right: none;
+      }
+    }
+    &-work {
+      border-left: 1px solid $textGreen;
+      @include adaptiveValue(
+        "padding-left",
+        125,
+        80,
+        2,
+        $containerWidth,
+        991.98
+      );
+      justify-self: start;
+
+      @media (max-width: $tablet) {
+        border-left: none;
+      }
+    }
+  }
+
+  &__title {
+    @include adaptiveValue("font-size", 20, 18);
+    font-family: "Philosopher";
+    font-weight: 700;
+    text-transform: capitalize;
+  }
+
+  &__center {
+    @media (max-width: $mobile) {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  &__logo {
+    margin-bottom: toRem(33);
+    @include adaptiveValue("width", 169, 70);
+    & img {
+      width: 100%;
+      @media (max-width: $mobile) {
+        opacity: 0.1;
+        transform: scale(3);
+      }
+    }
+  }
+
+  &__socials {
+    display: flex;
+    width: 160%;
+    margin-left: -30%;
+    justify-content: space-between;
+    @media (max-width: $mobile) {
+      flex-direction: column;
+      width: auto;
+      margin-left: 0;
+    }
+  }
+
+  &__btn {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translate(0px, -50%) rotate(-90deg);
+    width: toRem(50);
+    height: toRem(50);
+    border-radius: 50%;
+    border: 2px solid $textGreen;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @media (max-width: $mobileSmall) {
+      opacity: 0;
+      overflow: hidden;
+    }
+  }
+
+  &__copyright {
+    text-align: center;
+    padding-top: toRem(20);
+    padding-bottom: toRem(20);
+    @include adaptiveValue("font-size", 16, 14);
+  }
+  & hr {
+    width: 100vw;
+    background-color: $textGreen;
+    height: 1px;
+  }
+}
+
+//====================================================================================================

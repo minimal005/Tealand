@@ -1,0 +1,208 @@
+.header {
+    position: fixed;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    &__wrapper {
+        background-color: transparent;
+		position: fixed;
+		width: 100%;
+		left: 0;
+		top: 0;
+		z-index: 50;
+    }
+ 
+    &._header-scroll {
+        transition: all 0.3s ease 0s;
+        .header__wrapper {
+            transition: background-color 0.8s ease 0s;
+            background-color: #0000009f;
+		}
+		.header__content {
+            transition: min-height 0.8s ease;
+            color: #fff;
+			min-height: 50px;
+            padding: 0;
+            @media (max-width:$tablet){
+                min-height: 50px;
+            }
+            .menu-open & {
+                color: black;
+            }
+		}
+        .header__logo svg {
+            @include adaptiveValue("margin-bottom", 5, 0);
+            height: toRem(50);
+            & path {
+                fill: white;
+                .menu-open & {
+                    fill: $bgBtnGreen;
+                } 
+            }   
+        }
+        .header__cart {
+            & svg {
+                & path {
+                    fill: white;
+                    @media (max-width:$mobileSmall){
+                        .menu-open & {
+                            fill: $bgBtnGreen;
+                        }  
+                    }
+                }
+            }
+        }
+        .icon-menu {
+            span,
+            &::before,
+            &::after {
+                background-color: #fff;
+                .menu-open & {
+                    background-color: black;
+                    }
+            }
+        }
+    }
+    &__content {
+        // @include adaptiveValue("padding-top", 17, 10);
+        // @include adaptiveValue("padding-bottom", 17, 10);
+        display: grid;
+        grid-template-columns: 1fr minmax(70px, 170px) 1fr;
+        align-items: center;
+        // @include adaptiveValue("min-height", 100, 50);
+        @media (max-width:$mobile){
+             grid-template-columns: 100px auto 40px; 
+             @include adaptiveValue("column-gap", 45, 20);
+        }
+        @media (max-width:$mobileSmall){
+            display: flex;
+            justify-content: space-between;
+        }
+    }
+
+    &__menu {
+        @media (max-width:$mobile){
+              order: 3;
+        }
+        @media (max-width:$mobileSmall){
+            order: 3;
+      }
+    }
+
+    &__logo {
+        position: relative;
+        z-index: 10;
+        padding-left: toRem(10);
+        padding-right: toRem(10);
+        @include adaptiveValue("padding-top", 15, 5);
+        @include adaptiveValue("width", 130, 90);
+        justify-self: center;
+        & svg {
+            width: 100%;
+        }
+        @media (max-width:$mobile){
+            order: 1;
+        }
+    }
+
+    &__buttons {
+        justify-self: end;
+        display: flex;
+        @include adaptiveValue("column-gap", 45, 20);
+        @include adaptiveValue("font-size", 20, 16);
+        @media (max-width:$mobile){
+            order: 2;
+      }
+      @media (max-width:$mobileSmall){
+        padding-right: toRem(20); 
+      }
+    }
+
+    &__cart {
+        text-transform: capitalize;
+        text-wrap: nowrap;
+        display: flex;
+        align-items: center;
+        & span {
+            padding-left: toRem(15);
+            @media (max-width:$mobile){
+                 display: none; 
+            }
+            @media (max-width:$mobileSmall){
+                 display: inline-block; 
+            }
+        }
+   }
+
+    &__contact {
+        color: white;
+        border-radius: 24.819px;
+        background-color: $bgBtnGreen;
+        padding: toRem(13) toRem(36);
+        @include adaptiveValue("padding-left", 36, 15);
+        @include adaptiveValue("padding-right", 36, 15);
+        text-transform: capitalize;
+        text-wrap: nowrap;
+    }
+}
+.menu {
+    display: flex;
+    align-items: center;
+
+    &__icon {
+    }
+
+    &__body {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: flex-end;   
+    }
+
+    &__list {
+        display: flex;
+        align-content: center;
+        flex-wrap: wrap;
+        @include adaptiveValue("column-gap", 30, 10);
+        row-gap: toRem(10);
+        text-transform: capitalize;
+        @include adaptiveValue("font-size", 20, 16);
+        @media (max-width:$mobile){
+             position: relative;
+            &::before{
+                content:'';
+                position: absolute;
+                z-index: -1;
+                top: 100%;
+                right: -165%;
+                background-image: url('@img/leaf.png');
+                background-repeat: no-repeat;
+                transform: scale(0.6) rotateX(180deg) rotate(-30deg);  
+                width: toRem(522);
+                height: toRem(621);
+             } 
+            &::after{
+                content:'';
+                position: absolute;
+                z-index: -1;
+                top: 40%;
+                right: -195%;
+                background-image: url('@img/leaf.png');
+                background-repeat: no-repeat;
+                transform: scale(0.4) rotate(-0deg);  
+                width: toRem(522);
+                height: toRem(621);
+             } 
+        }
+    }
+    
+    &__item {
+        font-weight: 400;
+    }
+
+    &__link {
+    }
+}
+//========================================================================================================================================================

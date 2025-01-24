@@ -1,0 +1,67 @@
+.mainBlock {
+        display: grid;
+        @include adaptiveValue("row-gap", 33, 20);
+    &__center {
+        text-align: center;
+        
+    }
+    &__subscribe {
+        color: $textBrown;
+        font-weight: 400;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        @include adaptiveValue("font-size", 20, 14);
+        &._watcher-view {
+            width: 20ch;
+            overflow: hidden;
+            white-space: nowrap;
+            animation: printed_text 1.5s steps(20);
+        }
+    }
+    &__title {
+        color: $textGreen;
+        @include adaptiveValue("font-size", 50, 40);
+        font-weight: 700;
+        text-transform: capitalize;
+        font-family: 'Philosopher';
+    }
+    &__text {
+        max-width: toRem(660);
+        @include adaptiveValue("font-size", 20, 18);
+        & p{
+            font-weight: 300;
+            line-height: 150%;  
+            &:not(:last-child) {
+                margin-bottom: toRem(10);
+            }
+           
+        }  
+        @media (max-width:$tablet){
+            text-align: start;
+        }
+    }
+    @media (max-width:$tablet){
+        text-align: start;
+    }
+}
+
+.btn {
+    background-color: $bgBtnGreen;
+    text-transform: capitalize;
+    padding: toRem(13) toRem(52);
+    border-radius: 24.819px;
+    color: #fff;
+    @include adaptiveValue("font-size", 20, 18);
+    transition: 0.5s;
+    background-size: 200% auto;
+    background-image: linear-gradient(to right, $bgBtnGreen 0%, #a8ad8b 51%, $bgBtnGreen 100%);
+    &:hover {
+        background-position: right center;
+    };
+}
+
+@keyframes printed_text {
+    from {
+      width: 0;
+    }
+  }
